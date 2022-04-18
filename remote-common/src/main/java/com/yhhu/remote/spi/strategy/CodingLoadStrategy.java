@@ -1,4 +1,4 @@
-package com.yhhu.remote.spi;
+package com.yhhu.remote.spi.strategy;
 
 /**
  * @author yhhu
@@ -10,5 +10,10 @@ public class CodingLoadStrategy implements LoadingStrategy {
     @Override
     public String directory() {
         return "META-INF/remote/";
+    }
+
+    @Override
+    public int getPriority() {
+        return MAX_PRIORITY;
     }
 }

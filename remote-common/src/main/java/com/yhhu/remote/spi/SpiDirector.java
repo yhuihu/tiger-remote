@@ -1,11 +1,17 @@
 package com.yhhu.remote.spi;
 
 import com.yhhu.remote.exception.RemoteException;
+import com.yhhu.remote.spi.strategy.LoadingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.ServiceLoader.load;
+import static java.util.stream.StreamSupport.stream;
 
 /**
  * @author yhhu
@@ -13,10 +19,13 @@ import java.util.concurrent.ConcurrentMap;
  * @description SPI大工厂
  */
 public class SpiDirector {
+
     // 记录成功发现的类型
     private final ConcurrentMap<Class<?>, SpiLoader> spiLoadersMap = new ConcurrentHashMap<>(64);
     // 记录无法发现的类型
     private final List<Class<?>> spiLoaderNotFoundList = new ArrayList<>();
+
+    private static volatile List<LoadingStrategy> strategies = loadLoadingStrategies();
 
     private static volatile SpiDirector spiDirector;
 
@@ -36,11 +45,29 @@ public class SpiDirector {
         if (spiLoadersMap.get(type) == null && spiLoaderNotFoundList.contains(type)) {
             throw new RemoteException("SpiDirector not found class : " + type.getName());
         } else {
-
             // TODO 加载spi
-
+            SpiLoader spiLoader = doFindSpiLoader(type);
+            if (spiLoader != null) {
+                spiLoadersMap.put(type, spiLoader);
+                return spiLoader;
+            }
             throw new RemoteException("SpiDirector not found class : " + type.getName());
         }
+    }
+
+    /**
+     * spi读取方法
+     *
+     * @param type
+     * @param <T>
+     * @return
+     */
+    private <T> SpiLoader doFindSpiLoader(Class<T> type) {
+
+    }
+
+    private static List<LoadingStrategy> loadLoadingStrategies() {
+        return stream(load(LoadingStrategy.class).spliterator(), false).sorted().collect(Collectors.toList());
     }
 
     /**

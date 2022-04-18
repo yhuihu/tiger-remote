@@ -9,6 +9,8 @@
     <version>1.0</version>
     <modules>
         <module>remote-test</module>
+        <module>remote-common</module>
+        <module>remote-core</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -41,6 +43,13 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.10</version>
+        </dependency>
+
         <!--框架一时爽，解决问题火葬场-->
         <dependency>
             <groupId>org.projectlombok</groupId>

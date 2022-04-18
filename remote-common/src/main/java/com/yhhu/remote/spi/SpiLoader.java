@@ -2,6 +2,9 @@ package com.yhhu.remote.spi;
 
 import com.yhhu.remote.util.StringUtils;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author yhhu
  * @date 2022/4/16
@@ -9,15 +12,21 @@ import com.yhhu.remote.util.StringUtils;
  */
 public class SpiLoader<T> {
 
-    public static <T> T getSpiLoader(Class<T> type, String name) {
+    private volatile Map<String, T> classMap = new ConcurrentHashMap<>();
+
+    public static <T> T load(Class<T> type, String name) {
         SpiLoader<T> spiLoader = SpiDirector.getInstance().getSpiLoader(type);
         return spiLoader.load(name);
     }
 
-    public T load(String name) {
+    private T load(String name) {
         if (StringUtils.isEmpty(name)) {
-            throw new IllegalArgumentException("Extension name == null");
+            throw new IllegalArgumentException(String.format("SpiLoader class:%s == null", name));
         }
-        return null;
+        T tClass = classMap.get(name);
+        if (tClass != null) {
+            return tClass;
+        }
+        throw new IllegalArgumentException(String.format("SpiLoader class:%s == null", name));
     }
 }
