@@ -6,6 +6,20 @@ package com.yhhu.remote.spi.strategy;
  * @description 加载策略
  */
 public interface LoadingStrategy extends Prioritized {
-    // spi扫描路径
+
+    /**
+     * 返回实现类SPI扫描路径
+     *
+     * @return {@link String}
+     */
     String directory();
+
+    /**
+     * 用以读取spi的文件名，默认为类名
+     *
+     * @return {@link Class}
+     */
+    default Class<?> strategyClass() {
+        return this.getClass();
+    }
 }

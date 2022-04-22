@@ -17,4 +17,14 @@ public class StringUtils {
         return str == null || str.isEmpty();
     }
 
+    /**
+     * is not empty string.
+     *
+     * @param str source string.
+     * @return is not empty.
+     */
+    public static boolean isNotEmpty(String str) {
+        return !isEmpty(str);
+    }
+
 }

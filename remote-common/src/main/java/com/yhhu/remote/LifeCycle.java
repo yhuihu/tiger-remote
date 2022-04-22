@@ -19,4 +19,13 @@ public interface LifeCycle<T> {
      * @param objects 自定义参数
      */
     void end(T... objects);
+
+    /**
+     * 加载顺序处理，数值越大越后加载
+     *
+     * @return
+     */
+    default int getOrder() {
+        return Integer.MAX_VALUE;
+    }
 }

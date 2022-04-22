@@ -14,9 +14,13 @@ public class SpiLoader<T> {
 
     private volatile Map<String, T> classMap = new ConcurrentHashMap<>();
 
-    public static <T> T load(Class<T> type, String name) {
-        SpiLoader<T> spiLoader = SpiDirector.getInstance().getSpiLoader(type);
-        return spiLoader.load(name);
+    public static <T> T load(Class<T> type, String name) throws Throwable {
+        try {
+            SpiLoader<T> spiLoader = SpiDirector.getInstance().getSpiLoader(type);
+            return spiLoader.load(name);
+        } catch (Exception ex) {
+            throw new Throwable("spi load error !!!!!! please see the stack information to fix.", ex);
+        }
     }
 
     private T load(String name) {
@@ -28,5 +32,9 @@ public class SpiLoader<T> {
             return tClass;
         }
         throw new IllegalArgumentException(String.format("SpiLoader class:%s == null", name));
+    }
+
+    public void cacheClass(String className, T t) {
+        classMap.put(className, t);
     }
 }
