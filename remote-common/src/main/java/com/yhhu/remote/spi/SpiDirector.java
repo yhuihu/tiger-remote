@@ -121,7 +121,7 @@ public class SpiDirector {
      *
      * @param spiLoader
      * @param forName
-     * @param name
+     * @param name      proto=com.yhhu.remote.spi.strategy.CodingLoadStrategy，则name为proto
      */
     private void cacheClass(SpiLoader spiLoader, Class<?> forName, String name) {
         spiLoader.cacheClass(name, forName);

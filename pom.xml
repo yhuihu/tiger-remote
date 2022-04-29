@@ -11,6 +11,7 @@
         <module>remote-test</module>
         <module>remote-common</module>
         <module>remote-core</module>
+        <module>remote-protocol</module>
     </modules>
     <packaging>pom</packaging>
 

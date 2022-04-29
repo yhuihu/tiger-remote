@@ -12,22 +12,22 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class SpiLoader<T> {
 
-    private volatile Map<String, T> classMap = new ConcurrentHashMap<>();
+    private volatile Map<String, Object> classMap = new ConcurrentHashMap<>();
 
-    public static <T> T load(Class<T> type, String name) throws Throwable {
+    public static Object load(Class type, String name) throws Throwable {
         try {
-            SpiLoader<T> spiLoader = SpiDirector.getInstance().getSpiLoader(type);
+            SpiLoader spiLoader = SpiDirector.getInstance().getSpiLoader(type);
             return spiLoader.load(name);
         } catch (Exception ex) {
             throw new Throwable("spi load error !!!!!! please see the stack information to fix.", ex);
         }
     }
 
-    private T load(String name) {
+    private Object load(String name) {
         if (StringUtils.isEmpty(name)) {
             throw new IllegalArgumentException(String.format("SpiLoader class:%s == null", name));
         }
-        T tClass = classMap.get(name);
+        Object tClass = classMap.get(name);
         if (tClass != null) {
             return tClass;
         }
