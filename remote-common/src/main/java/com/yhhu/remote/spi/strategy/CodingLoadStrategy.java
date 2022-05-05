@@ -20,10 +20,7 @@ public class CodingLoadStrategy implements LoadingStrategy {
         return MAX_PRIORITY;
     }
 
-    public static Protocol getProtocolCoding(Class classType, String name) throws Throwable {
-        if (!classType.isAssignableFrom(Protocol.class)) {
-            throw new Exception("protocol class must extension AbstractProtocol.class");
-        }
+    public static Protocol getProtocolCoding(String name) throws Throwable {
         Object load = SpiLoader.load(CodingLoadStrategy.class, name);
         return (Protocol) load;
     }
