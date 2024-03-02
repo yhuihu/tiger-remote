@@ -1,12 +1,16 @@
-package com.yhhu.remote.config;
+package com.tiger.remote.config;
 
-import com.yhhu.remote.constant.RemoteConstant;
+import com.tiger.remote.constant.RemoteConstant;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author yhhu
  * @date 2022/4/16
  * @description 配置类
  */
+@Getter
+@Setter
 public class RemoteConfig {
 
     // ip地址

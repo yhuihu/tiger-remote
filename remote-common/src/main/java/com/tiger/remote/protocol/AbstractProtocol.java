@@ -1,6 +1,6 @@
-package com.yhhu.remote.protocol;
+package com.tiger.remote.protocol;
 
-import com.yhhu.remote.exception.RemoteException;
+import com.tiger.remote.exception.RemoteException;
 
 /**
  * @author yhhu

@@ -1,4 +1,4 @@
-package com.yhhu.remote.constant;
+package com.tiger.remote.constant;
 
 /**
  * @author yhhu

@@ -1,4 +1,4 @@
-package com.yhhu.remote.util;
+package com.tiger.remote.util;
 
 /**
  * @author yhhu

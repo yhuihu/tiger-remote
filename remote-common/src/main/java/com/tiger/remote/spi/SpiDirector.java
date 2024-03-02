@@ -1,6 +1,6 @@
-package com.yhhu.remote.spi;
+package com.tiger.remote.spi;
 
-import com.yhhu.remote.exception.RemoteException;
+import com.tiger.remote.exception.RemoteException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.yhhu.remote.coder;
+package com.tiger.remote.coder;
 
-import com.yhhu.remote.Message;
+import com.tiger.remote.Message;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;

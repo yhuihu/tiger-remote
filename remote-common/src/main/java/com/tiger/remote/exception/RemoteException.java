@@ -1,4 +1,4 @@
-package com.yhhu.remote.exception;
+package com.tiger.remote.exception;
 
 /**
  * @author yhhu
