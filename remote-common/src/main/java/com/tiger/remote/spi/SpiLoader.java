@@ -1,7 +1,5 @@
 package com.tiger.remote.spi;
 
-import com.tiger.remote.util.StringUtils;
-
 /**
  * @author yhhu
  * @date 2022/4/16
@@ -9,15 +7,14 @@ import com.tiger.remote.util.StringUtils;
  */
 public class SpiLoader<T> {
 
-    public static <T> T getSpiLoader(Class<T> type, String name) {
-        SpiLoader<T> spiLoader = SpiDirector.getInstance().getSpiLoader(type);
-        return spiLoader.load(name);
+
+    public static <T> T get(Class<T> type, String name) {
+        SpiInstance<T> spiLoader = SpiDirector.getInstance().getSpiInstance(type);
+        return spiLoader.get(name);
     }
 
-    public T load(String name) {
-        if (StringUtils.isEmpty(name)) {
-            throw new IllegalArgumentException("Extension name == null");
-        }
-        return null;
+    public static <T> void put(Class<T> type, T instance, String name) {
+        SpiInstance<T> spiLoader = SpiDirector.getInstance().getSpiInstance(type);
+        spiLoader.put(name, instance);
     }
 }

@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentMap;
  */
 public class SpiDirector {
     // 记录成功发现的类型
-    private final ConcurrentMap<Class<?>, SpiLoader> spiLoadersMap = new ConcurrentHashMap<>(64);
+    private final ConcurrentMap<Class<?>, SpiInstance> spiLoadersMap = new ConcurrentHashMap<>(64);
     // 记录无法发现的类型
     private final List<Class<?>> spiLoaderNotFoundList = new ArrayList<>();
 
@@ -30,16 +30,13 @@ public class SpiDirector {
      *
      * @param type 类型
      * @param <T>  泛型
-     * @return {@link  SpiLoader}
+     * @return {@link  SpiInstance}
      */
-    public <T> SpiLoader<T> getSpiLoader(Class<T> type) {
+    public <T> SpiInstance<T> getSpiInstance(Class<T> type) {
         if (spiLoadersMap.get(type) == null && spiLoaderNotFoundList.contains(type)) {
             throw new RemoteException("SpiDirector not found class : " + type.getName());
         } else {
-
-            // TODO 加载spi
-
-            throw new RemoteException("SpiDirector not found class : " + type.getName());
+            return spiLoadersMap.get(type);
         }
     }
 

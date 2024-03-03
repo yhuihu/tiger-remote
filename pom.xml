@@ -4,13 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.yhhu</groupId>
+    <groupId>com.tiger</groupId>
     <artifactId>tiger-remote</artifactId>
     <version>1.0</version>
     <modules>
         <module>remote-test</module>
         <module>remote-core</module>
         <module>remote-common</module>
+        <module>remote-netty</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -18,9 +19,9 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <netty.version>4.1.66.Final</netty.version>
-        <lombok.version>1.18.22</lombok.version>
         <remote.version>1.0</remote.version>
         <logback.version>1.4.14</logback.version>
+        <springboot.version>2.3.12.RELEASE</springboot.version>
     </properties>
 
     <dependencyManagement>
@@ -31,14 +32,26 @@
                 <version>${netty.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.yhhu</groupId>
+                <groupId>com.tiger</groupId>
                 <artifactId>remote-common</artifactId>
                 <version>${remote.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.yhhu</groupId>
+                <groupId>com.tiger</groupId>
                 <artifactId>remote-core</artifactId>
                 <version>${remote.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tiger</groupId>
+                <artifactId>remote-test</artifactId>
+                <version>${remote.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -48,12 +61,14 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
     </dependencies>
 

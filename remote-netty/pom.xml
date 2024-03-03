@@ -3,20 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <artifactId>tiger-remote</artifactId>
         <groupId>com.tiger</groupId>
+        <artifactId>tiger-remote</artifactId>
         <version>1.0</version>
     </parent>
 
-    <artifactId>remote-core</artifactId>
-    <version>1.0</version>
+    <artifactId>remote-netty</artifactId>
 
     <dependencies>
         <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.tiger</groupId>
-            <artifactId>remote-common</artifactId>
+            <artifactId>remote-core</artifactId>
         </dependency>
     </dependencies>
+
 </project>

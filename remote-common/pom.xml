@@ -6,7 +6,7 @@
 
     <parent>
         <artifactId>tiger-remote</artifactId>
-        <groupId>com.yhhu</groupId>
+        <groupId>com.tiger</groupId>
         <version>1.0</version>
     </parent>
 
@@ -14,9 +14,5 @@
     <version>1.0</version>
 
     <dependencies>
-        <dependency>
-            <groupId>io.netty</groupId>
-            <artifactId>netty-all</artifactId>
-        </dependency>
     </dependencies>
 </project>
