@@ -32,8 +32,12 @@ public class SpiDirector {
      * @param <T>  泛型
      * @return {@link  SpiInstance}
      */
-    public <T> SpiInstance<T> getSpiInstance(Class<T> type) {
-        if (spiLoadersMap.get(type) == null && spiLoaderNotFoundList.contains(type)) {
+    public <T> SpiInstance getSpiInstance(Class<T> type) {
+        if (spiLoaderNotFoundList.contains(type)) {
+            throw new RemoteException("SpiDirector not found class : " + type.getName());
+        }
+        if (spiLoadersMap.get(type) == null) {
+            spiLoaderNotFoundList.add(type);
             throw new RemoteException("SpiDirector not found class : " + type.getName());
         } else {
             return spiLoadersMap.get(type);
