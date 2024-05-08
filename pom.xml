@@ -12,6 +12,7 @@
         <module>remote-core</module>
         <module>remote-common</module>
         <module>remote-netty</module>
+        <module>remote-protobuf</module>
     </modules>
     <packaging>pom</packaging>
 
