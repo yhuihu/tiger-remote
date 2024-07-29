@@ -35,7 +35,7 @@ public class NettyBootstrapServer extends AbstractBootstrapServer{
                         protected void initChannel(SocketChannel ch) throws Exception {
                             //给我们的workerGroup的EventLoop对应的管道设置处理器
                             ch.pipeline().addLast(
-
+                                
                             );
                         }
                     });
