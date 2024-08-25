@@ -1,6 +1,7 @@
 package com.tiger.remote.bootstrap;
 
 import com.tiger.remote.config.RemoteConfig;
+import com.tiger.remote.exception.RemoteException;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -45,7 +46,7 @@ public class NettyBootstrapServer extends AbstractBootstrapServer{
             //对关闭通道进行监听 当有关闭通道消息事件时才会关闭
             sync.channel().closeFuture().sync();
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            throw new RemoteException(e);
         } finally {
             bossGroup.shutdownGracefully();
             workerGroup.shutdownGracefully();
